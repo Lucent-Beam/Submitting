@@ -1,6 +1,8 @@
 // magic.js
 $(document).ready(function() {
 
+
+
     $(".form-control").html(' ');
 
     // process the form
@@ -29,11 +31,14 @@ $(document).ready(function() {
                 console.log(data);
 
                 // here we will handle errors and validation messages
-                $(".help-block").html(' ');
-                $(".alert alert-success").html(' ');
-                $('#name-group').addClass('form-group');
-                $('#email-group').addClass('form-group');
-                $('#superhero-group').addClass('form-group');
+                $('#name-group').removeClass('has-error');
+                $('#email-group').removeClass('has-error');
+                $('#superhero-group').removeClass('has-error');
+
+                $('.help-block').empty();
+
+                $('.alert-success').removeClass('alert alert-success').empty();
+
 
                 if ( ! data.success) {
 
@@ -60,8 +65,9 @@ $(document).ready(function() {
 
                } else {
 
+
                    // ALL GOOD! just show the success message!
-                   $('form').append('<div class="alert alert-success">' + data.message + '</div>');
+                   $('form').append('<p></p><div class="alert alert-success">' + data.message + '</div>');
 
                    // usually after form submission, you'll want to redirect
                    // window.location = '/thank-you'; // redirect a user to another page
